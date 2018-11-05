@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/products', product);
 
+app.use(express.static('public'));
+
 let port = 8080;
 
 app.listen(port, () => {
