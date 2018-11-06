@@ -1,30 +1,34 @@
-
 <html>
-< head >
-  <title></title>
-</ head >
-< body >
- <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <h2>Paul’s Training Company</h2>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-sm-6">
-        <table id="productTable"
-           class="table table-bordered
-                 table-condensed table-striped">
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>Introduction Date</th>
-              <th>URL</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-</ body >
-</ html >
+
+<head lang="en">
+    <title>SE 3316 - Lab 2</title>
+    <meta charset="UTF-8">
+    <script type='text/javascript' , src='index.js'></script>
+</head>
+
+<body>
+    <header>
+        <h1>Sporting Goods Store</h1>
+    </header>
+    <form> Add New Item <br><br>
+        Product Name <input type="text" , name="productName" , id="productName" , checked="checked"> 
+        <br>
+        Price <input type="text" , name="productPrice" , id="productPrice"> 
+        <br>
+        Tax Rate (optional) <input type = "text", name = "productTax", id = "productTax"> 
+        <br>
+        <button type="submit" onclick = "hola('productName', 'productPrice', 'productTax')">Submit</button>
+    </form>
+
+
+   
+    <h1>Basket</h1>
+    <div id="basket"></div>
+    
+<h2>
+    <button type="button" onclick=clearBasket()> Clear Basket</button>
+    <button type="button" onclick=purchaseMade()> Buy</button>
+</h2>
+</body>
+
+</html>

@@ -10,7 +10,8 @@ exports.product_create = function (req, res) {
     let product = new Product(
         {
             name: req.body.name,
-            price: req.body.price
+            price: req.body.price,
+            taxRate: req.body.taxRate
         }
     );
 
