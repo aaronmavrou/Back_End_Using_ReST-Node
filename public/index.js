@@ -33,7 +33,10 @@ getAll();
 }
 
 var myArray = [];
-
+var j=1000;
+var k = -1;
+var r= 100000;
+var m = -100000;
 function getAll(){
     removeAll();
     const url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/getall';
@@ -42,8 +45,14 @@ function getAll(){
     .then(function(data){
         for(i = 0; i< data.length; i++){
            createElement("LI",(i).toString(), data[i].name + "," + data[i].price + "," + data[i].taxRate + "," + data[i].quantity);
+           createTextField("input", (j++).toString());
+           createButton("button", (r++).toString(), "Change Quantity");
+           var addBreak = document.createElement("br");
+           document.body.appendChild(addBreak);
+           createTextField("input", (k--).toString());
+           createButton("button", (m--).toString(), "Change Tax Rate");
            myArray[i]= data[i]._id;
-            console.log(data[i].name);
+           console.log(data[i].name);
         }
     })
 }
@@ -57,6 +66,21 @@ function removeAll(){
             removeElement((i).toString());
         }
     })
+}
+
+function createTextField(el, elId){
+    var c = document.createElement(el);
+    c.setAttribute('id', elId);
+    document.body.appendChild(c);
+}
+
+function createButton(elem, elemId, theText){
+    var d = document.createElement(elem);
+    var e = document.createTextNode(theText);
+    d.setAttribute('id', elemId);
+    d.appendChild(e);
+    document.body.appendChild(d);
+    
 }
 
 function createElement(element, elementId, itemDetails){
@@ -73,42 +97,65 @@ function removeElement(theid){
 }
 
 function quantityUpdate(updateItemId, newQuantity){
-    var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/update/' + updateItemId;
+    var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/updateQuantity/' + updateItemId;
     
     var data = {
         quantity: newQuantity
     }
     
     let fetchData = { 
-    method: 'PUT', 
-    body: JSON.stringify(data),
-    headers: new Headers({
+        method: 'PUT', 
+        body: JSON.stringify(data),
+        headers: new Headers({
         'Content-Type': 'application/json'
-    })
+        })
+    }
+
+    fetch(url, fetchData)
+    .then(function() {
+        alert("Quantity Updated!");
+    }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error', error));
 }
 
-fetch(url, fetchData)
-.then(function() {
-    alert("Quantity Updated!");
-}).then(res => res.json())
-.then(response => console.log('Success:', JSON.stringify(response)))
-.catch(error => console.error('Error', error));
+function taxRateUpdate(updatetaxRateId, newtaxRate){
+    var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/updateTaxRate/' + updateTaxRateId;
+    
+    var data = {
+        taxRate: newtaxRate
+    }
+    
+    let fetchData = { 
+        method: 'PUT', 
+        body: JSON.stringify(data),
+        headers: new Headers({
+        'Content-Type': 'application/json'
+        })
+    }
+
+    fetch(url, fetchData)
+    .then(function() {
+        alert("Tax Rate Updated!");
+    }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error', error));
 }
 
 function deleteProduct(deleteItemIdId){
-var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/update/' + deleteItemId;    
+    var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/update/' + deleteItemId;    
 
     let fetchData = { 
-    method: 'DELETE', 
-    headers: new Headers({
-        'Content-Type': 'application/json'
-    })
-}
+        method: 'DELETE', 
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    }
 
-fetch(url, fetchData)
-.then(function() {
-    alert("Item Deleted!");
-}).then(res => res.json())
-.then(response => console.log('Success:', JSON.stringify(response)))
-.catch(error => console.error('Error', error));
+    fetch(url, fetchData)
+    .then(function() {
+        alert("Item Deleted!");
+    }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error', error));
 }
