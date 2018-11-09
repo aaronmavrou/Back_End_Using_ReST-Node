@@ -11,7 +11,8 @@ exports.product_create = function (req, res) {
         {
             name: req.body.name,
             price: req.body.price,
-            taxRate: req.body.taxRate
+            taxRate: req.body.taxRate,
+            quantity: req.body.quantity
         }
     );
 
@@ -50,17 +51,6 @@ exports.product_getall = function (req, res){
             if (err)
                 res.send(err);
                 
-                
-                 var userMap = {};
-
-    items.forEach(function(user) {
-      userMap[user._id] = user;
+            res.json(items);
     });
-
-    res.send(userMap);
-    //res.send("Olyvia smells");
-                
-                
-            //res.json(items);
-        });
 }
