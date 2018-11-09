@@ -44,3 +44,11 @@ exports.product_delete = function (req, res) {
         res.send('Deleted successfully!');
     })
 };
+
+exports.product_getall = function (req, res){
+    Product.find({}, function (err, docs) {
+        if (err) return next(err);
+        res.send(docs);
+    });
+    
+}
