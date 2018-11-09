@@ -46,9 +46,21 @@ exports.product_delete = function (req, res) {
 };
 
 exports.product_getall = function (req, res){
-    Product.find({}, function (err, docs) {
-        if (err) return next(err);
-        res.send(docs);
+        Product.find(function(err, items) {
+            if (err)
+                res.send(err);
+                
+                
+                 var userMap = {};
+
+    items.forEach(function(user) {
+      userMap[user._id] = user;
     });
-    
+
+    res.send(userMap);
+    //res.send("Olyvia smells");
+                
+                
+            //res.json(items);
+        });
 }

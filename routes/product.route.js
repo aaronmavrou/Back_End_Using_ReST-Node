@@ -11,10 +11,10 @@ module.exports = router;
 
 router.post('/create', product_controller.product_create);
 
-router.get('/:id', product_controller.product_details);
+router.get('/getall', product_controller.product_getall);
 
-router.put('/:id/update', product_controller.product_update);
+router.get('/getone/:id', product_controller.product_details);
 
-router.delete('/:id/delete', product_controller.product_delete);
+router.put('/update/:id', product_controller.product_update);
 
-router.get('getall', product_controller.product_getall);
+router.delete('/delete/:id', product_controller.product_delete);
