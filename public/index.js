@@ -94,3 +94,21 @@ fetch(url, fetchData)
 .then(response => console.log('Success:', JSON.stringify(response)))
 .catch(error => console.error('Error', error));
 }
+
+function deleteProduct(deleteItemIdId){
+var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/update/' + deleteItemId;    
+
+    let fetchData = { 
+    method: 'DELETE', 
+    headers: new Headers({
+        'Content-Type': 'application/json'
+    })
+}
+
+fetch(url, fetchData)
+.then(function() {
+    alert("Item Deleted!");
+}).then(res => res.json())
+.then(response => console.log('Success:', JSON.stringify(response)))
+.catch(error => console.error('Error', error));
+}
