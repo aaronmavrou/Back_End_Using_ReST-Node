@@ -13,6 +13,7 @@ let data = {
     taxRate: itemQuantity,
     quantity: itemTax
 }
+
 // The parameters we are gonna pass to the fetch function
 let fetchData = { 
     method: 'POST', 
@@ -119,11 +120,11 @@ function quantityUpdate(updateItemId, newQuantity){
     .catch(error => console.error('Error', error));
 }
 
-function taxRateUpdate(updatetaxRateId, newtaxRate){
+function taxRateUpdate(updateTaxRateId, newTaxRate){
     var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/updateTaxRate/' + updateTaxRateId;
     
     var data = {
-        taxRate: newtaxRate
+        taxRate: newTaxRate
     }
     
     let fetchData = { 
@@ -143,7 +144,7 @@ function taxRateUpdate(updatetaxRateId, newtaxRate){
 }
 
 function deleteProduct(deleteItemIdId){
-    var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/update/' + deleteItemId;    
+    var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/delete/' + deleteItemId;    
 
     let fetchData = { 
         method: 'DELETE', 
