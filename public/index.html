@@ -3,6 +3,7 @@
 <head lang="en">
     <title>SE 3316 - Lab 2</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css" />
     <script type='text/javascript' , src='index.js'></script>
 </head>
 
@@ -15,24 +16,20 @@
         <div> Add New Item <br><br>
             Product Name <input type="text" , name="productName" , id="productName" , checked="checked"> 
             <br>
-            Price <input type="number" , name="productPrice" , id="productPrice"> 
+            Price <input type="number", min = "0", name="productPrice" , id="productPrice"> 
             <br>
-            Quantity <input type = "number", name = "productQuantity", id = "productQuantity">
+            Quantity <input type = "number", placeholder = "0", min = "0", name = "productQuantity", id = "productQuantity">
             <br>
-            Tax Rate (optional) <input type = "number", name = "productTax", id = "productTax"> 
+            Tax Rate (optional) <input type = "number", placeholder = "0", name = "productTax", mind = "0", id = "productTax"> 
             <br>
             <button type="submit" onclick = "hola()">Submit</button>
         </div>
 
     
    
-    <h1>Basket</h1>
+    <h1>DataBase</h1>
     <div id="basket"></div>
     
-<h2>
-    <button type="button" onclick=clearBasket()> Clear Basket</button>
-    <button type="button" onclick=purchaseMade()> Buy</button>
-</h2>
 </body>
 
 </html>

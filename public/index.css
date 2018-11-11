@@ -1,0 +1,16 @@
+#basket{
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid;
+    background-color: rgb(253, 83, 188);
+}
+
+div {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid;
+    background-color: rgb(8, 170, 245);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
