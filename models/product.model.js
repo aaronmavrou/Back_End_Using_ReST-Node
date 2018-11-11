@@ -5,7 +5,7 @@ let ProductSchema = new Schema({
     name: {type: String, required: true, max: 100},
     price: {type: Number, required: true},
     taxRate: {type: Number, required: false},
-    quantity: {type: Number, required: true},
+    quantity: {type: Number, required: false},
 });
 
 

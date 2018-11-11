@@ -19,11 +19,12 @@ function hola(){
     }
     
     else{
+        
         let data = {
             name: encodeHTML(itemName),
             price: encodeHTML(itemPrice),
-            taxRate: encodeHTML(itemQuantity),
-            quantity: encodeHTML(itemTax)
+            quantity: encodeHTML(itemQuantity),
+            taxRate: encodeHTML(itemTax)
             }
         // The parameters we are gonna pass to the fetch function
         let fetchData = { 
