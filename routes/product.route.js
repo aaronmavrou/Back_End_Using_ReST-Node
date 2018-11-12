@@ -13,7 +13,7 @@ router.post('/create', product_controller.product_create);
 
 router.get('/getall', product_controller.product_getall);
 
-router.get('/getone/:id', product_controller.product_details);
+router.get('/oneItem/:id', product_controller.product_details);
 
 router.put('/updateQuantity/:id', product_controller.product_updateQuantity);
 

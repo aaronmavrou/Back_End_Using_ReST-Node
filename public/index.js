@@ -1,5 +1,5 @@
-setInterval(function(){ getAll(); }, 2000);
-
+setInterval(function(){ getAll(); }, 6000);
+getAll();
 var myArray = [];
 
 function encodeHTML(s) {
@@ -13,8 +13,6 @@ function addAnItem(){
     var itemPrice = document.getElementById("productPrice").value;
     var itemQuantity = document.getElementById("productQuantity").value;
     var itemTax = document.getElementById("productTax").value;
-    
-    alert(itemQuantity);
     
     if (itemName.length == 0 || itemPrice.length == 0){
         alert("Your item name or price cannot be empty. Please try again");
@@ -43,8 +41,6 @@ function addAnItem(){
         }).then(res => res.json())
         .then(response => console.log('Success:', JSON.stringify(response)))
         .catch(error => console.error('Error', error));
-
-        getAll();
     }
 }
 
@@ -70,7 +66,6 @@ function getAll(){
         startRow = startRow+1;
         }
         document.getElementById("basket").innerHTML = myTable;
-        alert("JAKE SUCKS");
     })
 }
 
@@ -162,4 +157,22 @@ function deleteProduct(deleteItemIdId){
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error', error));
+}
+
+function getItem(num){
+    if (myArray.length == 0){
+        alert("Database is empty. Add an item to the database");
+    }
+    else if(document.getElementById(num).value > (myArray.length -1)){
+        alert("Please enter a value between: 0 and " + (myArray.length -1));
+    }
+    else{
+        var itemValue = document.getElementById(num).value;
+        var url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/oneItem/' + myArray[itemValue];
+        fetch(url)
+    .then((resp)=> resp.json())
+    .then(function(data){
+            alert("Item Name: " + data.name + "\nCost: " + data.price + "\nQuantity: " + data.quantity + "\nTax Rate: " + data.taxRate + "\nItem _id: " + myArray[itemValue]);
+        });
+    }
 }

@@ -18,15 +18,16 @@
             <br>
             Price <input type="number", min = "0", name="productPrice" , id="productPrice"> 
             <br>
-            Quantity <input type = "number", placeholder = "0", min = "0", name = "productQuantity", id = "productQuantity">
+            Quantity <input type = "number", min = "0", name = "productQuantity", id = "productQuantity">
             <br>
-            Tax Rate (optional) <input type = "number", require = "false", name = "productTax", mind = "0", id = "productTax"> 
+            Tax Rate (optional) <input type = "number",  name = "productTax", min = "0", id = "productTax"> 
             <br>
             <button type="submit" onclick = "addAnItem()">Submit</button>
+            <br>
+            Input Item Id<input type = "text", name = "productId",  id = "productId"> 
+            <button type="submit" onclick = "getItem('productId')">Find Item Details</button>
         </div>
 
-    
-   
     <h1>DataBase</h1>
     <div id="basket"></div>
     
