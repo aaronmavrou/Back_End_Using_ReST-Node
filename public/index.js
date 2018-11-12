@@ -1,10 +1,12 @@
+setInterval(function(){ getAll(); }, 2000);
+
 var myArray = [];
 
 function encodeHTML(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }
 
-function hola(){
+function addAnItem(){
     const url = 'https://se3316-amavrou-lab3-amavrou.c9users.io/products/create';
     // The data we are going to send in our request
     var itemName = document.getElementById("productName").value;
@@ -37,7 +39,7 @@ function hola(){
 
         fetch(url, fetchData)
         .then(function() {
-            alert("you maybe did it!");
+            alert("Item has been added to the database!");
         }).then(res => res.json())
         .then(response => console.log('Success:', JSON.stringify(response)))
         .catch(error => console.error('Error', error));
@@ -55,28 +57,27 @@ function getAll(){
         var startRow = 1;
         var myTable = '<table id = "myTableId"><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>Tax Rate </th></tr>';
         for(i = 0; i< data.length; i++){
-             var thebuttonid = "button" + i;
-             var e = document.createTextNode(data[i].name);
-             var f = document.createTextNode(data[i].price);
-             var g = document.createTextNode(data[i].quantity);
-             var h = document.createTextNode(data[i].taxRate);
-             var ee = document.createElement("div");
-             var ff = document.createElement("div");
-             var gg = document.createElement("div");
-             var hh = document.createElement("div");
-             ee.appendChild(e);
-             ff.appendChild(f);
-             gg.appendChild(g);
-             hh.appendChild(h);
-           myTable += "<tr><td>" + ee.innerHTML + "</td><td>" + ff.innerHTML + "</td><td>" + gg.innerHTML + "</td><td>" + hh.innerHTML +  
-        "</td><td><button onclick='deleteProduct(" + i + ")'>Delete</button></td><td>" + "</td><td><input type='number' min = "+ 0 +" name='amount'></td><td>" +
-        "</td><td><button onclick='quantityUpdate("+ i + ',' + startRow +")'>Update Quantity</button></td><td>" + "</td><td><input type='number' min = "+ 0 +" name='amount'></td><td>" +
+           myTable += "<tr><td>" + makeTextNode(document.createTextNode(data[i].name)) 
+           + "</td><td>" + makeTextNode(document.createTextNode(data[i].price)) + "</td><td>" 
+           + makeTextNode(document.createTextNode(data[i].quantity)) + "</td><td>" 
+           + makeTextNode(document.createTextNode(data[i].taxRate)) +  
+        "</td><td><button onclick='deleteProduct(" + i + ")'>Delete</button></td><td>" + 
+        "</td><td><input type='number' min = "+ 0 +" name='amount'></td><td>" +
+        "</td><td><button onclick='quantityUpdate("+ i + ',' + startRow +")'>Update Quantity</button></td><td>" +
+        "</td><td><input type='number' min = "+ 0 +" name='amount'></td><td>" +
         "</td><td><button onclick='taxRateUpdate(" + i + ',' + startRow + ")'>Update Tax (%)</button></td>"
         myArray[i]= data[i]._id;
         startRow = startRow+1;
         }
         document.getElementById("basket").innerHTML = myTable;
+        alert("JAKE SUCKS");
     })
+}
+
+function makeTextNode(theItem){
+    var a = document.createElement("div");
+    a.appendChild(theItem);
+    return a.innerHTML;
 }
 
 function removeAll(){
@@ -118,8 +119,6 @@ function quantityUpdate(updateItemId, theRow){
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error', error));
-    
-    getAll();
 }
 
 function taxRateUpdate(updateTaxRateId, myRowNum){
@@ -145,8 +144,6 @@ function taxRateUpdate(updateTaxRateId, myRowNum){
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error', error));
-    
-    getAll();
 }
 
 function deleteProduct(deleteItemIdId){
@@ -165,5 +162,4 @@ function deleteProduct(deleteItemIdId){
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error', error));
-    getAll();
 }
